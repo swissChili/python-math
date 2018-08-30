@@ -5,8 +5,8 @@ num = sys.argv[1]
 
 primes = []
 factors = []
-
-i = 0 
+prime_factors = []
+i = 1 
 while i < int(num):
     i += 1
     if prime.is_prime(i) == None:
@@ -14,22 +14,27 @@ while i < int(num):
     else:
         pass 
 
-def factor ( num, factors ):
-    for prime in primes:
-        if int(num) % prime:
-            pass 
+def get_factors(num, factors, primes):
+    for i in primes:
+        if int(num) % i == 0:
+            factors.append(i)
         else:
-            new_num = int(num) / prime
-            return factor(new_num, factors)
+            pass
 
+def all_factors(num, factors):
+    if prime.is_prime(num) == None:
+        return num
+    else:
+        for i in factors:
+            prime_factors.append(i)
+            print(prime_factors)
+            new_num = int(num) / i
+            new_factors = []
+            get_factors(new_num, new_factors, primes)
+            return all_factors(new_num, new_factors)
 
-def all_factors(num):
-    all_nums = []
-    for i in xrange(num):
-        all_nums.append(i)
-    print(factor(num, all_nums))
-
+get_factors(num, factors, primes)
 factor_msg = "Factors:"
 spacing = len(factor_msg)
 print(factor_msg)
-all_factors(int(num))
+print(all_factors(int(num), factors))
