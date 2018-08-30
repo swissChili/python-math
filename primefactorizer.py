@@ -21,9 +21,9 @@ def get_factors(num, factors, primes):
         else:
             pass
 
-def all_factors(num, factors):
+def all_factors(num, factors, prime_factors):
     if prime.is_prime(num) == None:
-        return num
+        return int(num)
     else:
         for i in factors:
             prime_factors.append(i)
@@ -31,10 +31,10 @@ def all_factors(num, factors):
             new_num = int(num) / i
             new_factors = []
             get_factors(new_num, new_factors, primes)
-            return all_factors(new_num, new_factors)
+            return all_factors(new_num, new_factors, prime_factors)
 
 get_factors(num, factors, primes)
 factor_msg = "Factors:"
 spacing = len(factor_msg)
 print(factor_msg)
-print(all_factors(int(num), factors))
+print("[%d]" % all_factors(int(num), factors, prime_factors))
